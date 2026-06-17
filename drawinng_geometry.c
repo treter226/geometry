@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-void draw_rectangle(int wibth, int height)
+void draw_rectangle(int width, int height)
 {
     printf("Прямоугольник:\n");
 
     for (int x = 0; x < height; x++)
     {
-        for (int y = 0; y < wibth; y++)
+        for (int y = 0; y < width; y++)
         {
             printf("#");
         }
@@ -15,13 +15,13 @@ void draw_rectangle(int wibth, int height)
     }
 }
 
-void draw_triangle(int height, int wibth)
+void draw_triangle(int height, int width)
 {
     for (int row = 1; row <= height; row++)
     {
-        int chars = row * wibth / height;
+        int chars = row * width / height;
 
-        for (int z = 0; z < wibth - chars; z++)
+        for (int z = 0; z < width - chars; z++)
         {
             printf(" ");
         }
@@ -35,7 +35,7 @@ void draw_triangle(int height, int wibth)
 
 int main()
 {
-int hight, wibth;
+int hight, width;
 int choise;
 int triangletyp;
 
@@ -45,10 +45,10 @@ int triangletyp;
     if ( choise == 1)
     {
         printf("введите ширину:\n");
-        scanf("%d", &wibth);
+        scanf("%d", &width);
         printf("введите высоту:\n");
         scanf("%d", &hight);
-        draw_rectangle(wibth,hight);
+        draw_rectangle(width,hight);
     }
         
     if (choise == 2)
@@ -65,9 +65,9 @@ int triangletyp;
             scanf("%d", &hight);
 
             printf("Введите ширину: ");
-            scanf("%d", &wibth);
+            scanf("%d", &width);
 
-            draw_triangle(hight, wibth);
+            draw_triangle(hight, width);
 
     return 0;
         }
