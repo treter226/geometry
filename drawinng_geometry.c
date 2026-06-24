@@ -51,13 +51,13 @@ void draw_isoscelestriangle(int height)
 }
 void drawRhomb(int width) 
 {
-    for (int i = 0; i < width; ++i)
+    for (int i = 0; i < width; i++)
     {
-        for (int j = 0; j < width - i - 1; ++j)
+        for (int j = 0; j < width - i - 1; j++)
         {
             printf(" ");
         }
-        for (int k = 0; k < 2 * i + 1; ++k)
+        for (int k = 0; k < 2 * i + 1; k++)
         {
             printf("@");
         }
@@ -65,14 +65,14 @@ void drawRhomb(int width)
         printf("\n");
     }
 
-    for (int i = width - 2; i >= 0; --i)
+    for (int i = width - 2; i >= 0; i--)
     {
-        for (int j = 0; j < width - i - 1; ++j)
+        for (int j = 0; j < width - i - 1; j++)
         {
             printf(" ");
         }
 
-        for (int k = 0; k < 2 * i + 1; ++k)
+        for (int k = 0; k < 2 * i + 1; k++)
         {
             printf("@");
         }
