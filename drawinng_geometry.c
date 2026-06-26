@@ -1,5 +1,14 @@
 #include <stdio.h>
 
+void input_rectangle_parameters(int* ptr_height, int* ptr_width)
+{
+    printf("введите ширину:\n");
+    scanf("%d", ptr_width);
+    printf("введите высоту:\n");
+    scanf("%d", ptr_height);
+}
+
+
 void draw_rectangle(int width, int height)
 {
     printf("Прямоугольник:\n");
@@ -13,6 +22,14 @@ void draw_rectangle(int width, int height)
         printf("\n");
         
     }
+}
+
+void input_triangle_parameters(int* ptr_height, int* ptr_width)
+{
+    printf("Введите высоту: ");
+    scanf("%d", ptr_height);
+    printf("Введите ширину: ");
+    scanf("%d", ptr_width);
 }
 
 void draw_triangle(int height, int width)
@@ -49,15 +66,22 @@ void draw_isoscelestriangle(int height)
     printf("\n");
     }
 }
+
+void input_rombs_parameters(int* ptr_width)
+{
+    printf("Введите ширину ромба:\n");
+    scanf("%d", ptr_width);
+}
+
 void drawRhomb(int width) 
 {
-    for (int i = 0; i < width; i++)
+    for (int x = 0; x < width; x++)
     {
-        for (int j = 0; j < width - i - 1; j++)
+        for (int z = 0; z < width - x - 1; z++)
         {
             printf(" ");
         }
-        for (int k = 0; k < 2 * i + 1; k++)
+        for (int y = 0; y < 2 * x + 1; y++)
         {
             printf("@");
         }
@@ -65,14 +89,14 @@ void drawRhomb(int width)
         printf("\n");
     }
 
-    for (int i = width - 2; i >= 0; i--)
+    for (int x = width - 2; x >= 0; x--)
     {
-        for (int j = 0; j < width - i - 1; j++)
+        for (int z = 0; z < width - x - 1; z++)
         {
             printf(" ");
         }
 
-        for (int k = 0; k < 2 * i + 1; k++)
+        for (int y = 0; y < 2 * x + 1; y++)
         {
             printf("@");
         }
@@ -87,16 +111,14 @@ int main()
 int  height, width;
 int choise;
 int triangletyp;
+int z;
 
     printf("выбирите фигуру 1 - прямоугольник, 2 - треугольник, 3 - ромб:\n");
     scanf("%d", &choise);
         
     if ( choise == 1)
     {
-        printf("введите ширину:\n");
-        scanf("%d", &width);
-        printf("введите высоту:\n");
-        scanf("%d", &height);
+        input_rectangle_parameters(&height, &width);
         draw_rectangle(width, height);
     }
         
@@ -110,12 +132,7 @@ int triangletyp;
 
         if (triangletyp == 1) 
         {
-            printf("Введите высоту: ");
-            scanf("%d", &height);
-
-            printf("Введите ширину: ");
-            scanf("%d", &width);
-
+            input_triangle_parameters(&height, &width);
             draw_triangle(height, width);
 
         return 0;
@@ -134,8 +151,7 @@ int triangletyp;
     }
     if(choise == 3)
     {
-    printf("Введите ширину ромба:\n");
-    scanf("%d", &width);
+    input_rombs_parameters(&width);
     drawRhomb(width);
     }
 }
