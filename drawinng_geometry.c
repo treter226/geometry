@@ -50,6 +50,12 @@ void draw_triangle(int height, int width)
     }
 }
 
+void input_isosceles_triangle(int* ptr_height)
+{
+    printf("введите высоту:\n");
+    scanf("%d", ptr_height);
+}
+
 void draw_isoscelestriangle(int height)
  {
     for (int i = 1; i <= height; i++)
@@ -139,8 +145,7 @@ int z;
         }
         if (triangletyp == 2)
         {
-        printf("введите высоту:\n");
-        scanf("%d", &height);
+        input_isosceles_triangle(&height);
         draw_isoscelestriangle(height);
 
         }
