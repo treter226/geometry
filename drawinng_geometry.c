@@ -1,21 +1,28 @@
 #include <stdio.h>
 
-void input_rectangle_parameters(int* ptr_height, int* ptr_width)
+struct Size
+{
+int width;
+int height;
+};
+
+
+void input_rectangle_parameters(struct Size* size)
 {
     printf("введите ширину:\n");
-    scanf("%d", ptr_width);
+    scanf("%d", &(size->width));
     printf("введите высоту:\n");
-    scanf("%d", ptr_height);
+    scanf("%d", &(size->height));
 }
 
 
-void draw_rectangle(int width, int height)
+void draw_rectangle(struct Size* size)
 {
     printf("Прямоугольник:\n");
 
-    for (int x = 0; x < height; x++)
+    for (int x = 0; x < size->height; x++)
     {
-        for (int y = 0; y < width; y++)
+        for (int y = 0; y < size->width; y++)
         {
             printf("#");
         }
@@ -24,24 +31,24 @@ void draw_rectangle(int width, int height)
     }
 }
 
-void input_triangle_parameters(int* ptr_height, int* ptr_width)
+void input_triangle_parameters(struct Size* size)
 {
     printf("Введите высоту: ");
-    scanf("%d", ptr_height);
+    scanf("%d", &(size->height));
     printf("Введите ширину: ");
-    scanf("%d", ptr_width);
+    scanf("%d", &(size->width));
 }
 
-void draw_triangle(int height, int width)
+void draw_triangle(struct Size* size)
 {
-    for (int row = 1; row <= height; row++)
+    for (int row = 1; row <= size->height; row++)
     {
-        int chars = row * width / height;
+        int chars = row * size->width / size->height;
         for (int z = 0; z < chars; z++)
         {
             printf("@");
         }
-        for (int z = 0; z < width - chars; z++)
+        for (int z = 0; z < size->width - chars; z++)
         {
             printf(" ");
         }
@@ -50,18 +57,18 @@ void draw_triangle(int height, int width)
     }
 }
 
-void input_isosceles_triangle(int* ptr_height)
+void input_isosceles_triangle(struct Size* size)
 {
     printf("введите высоту:\n");
-    scanf("%d", ptr_height);
+    scanf("%d", &(size->height));
 }
 
-void draw_isosceles_triangle(int height)
+void draw_isosceles_triangle(struct Size* size)
  {
-    for (int i = 1; i <= height; i++)
+    for (int i = 1; i <= size->height; i++)
     {
 
-    for (int j = 1; j <= height - i; j++)
+    for (int j = 1; j <= size->height - i; j++)
     {
         printf(" ");
     }
@@ -73,17 +80,17 @@ void draw_isosceles_triangle(int height)
     }
 }
 
-void input_rombs_parameters(int* ptr_width)
+void input_rombs_parameters(struct Size* size)
 {
     printf("Введите ширину ромба:\n");
-    scanf("%d", ptr_width);
+    scanf("%d", &(size->width));
 }
 
-void drawRhomb(int width) 
+void drawRhomb(struct Size* size) 
 {
-    for (int x = 0; x < width; x++)
+    for (int x = 0; x < size->width; x++)
     {
-        for (int z = 0; z < width - x - 1; z++)
+        for (int z = 0; z < size->width - x - 1; z++)
         {
             printf(" ");
         }
@@ -95,9 +102,9 @@ void drawRhomb(int width)
         printf("\n");
     }
 
-    for (int x = width - 2; x >= 0; x--)
+    for (int x = size->width - 2; x >= 0; x--)
     {
-        for (int z = 0; z < width - x - 1; z++)
+        for (int z = 0; z < size->width - x - 1; z++)
         {
             printf(" ");
         }
@@ -114,10 +121,9 @@ void drawRhomb(int width)
 
 int main()
 {
-    int  height, width;
     int choise;
     int triangletyp;
-    int z;
+    struct Size size;
 
     printf("выбирите фигуру 1 - прямоугольник, 2 - треугольник, 3 - ромб:\n");
     scanf("%d", &choise);
@@ -125,8 +131,8 @@ int main()
     switch(choise)
     {
         case 1:
-        input_rectangle_parameters(&height, &width);
-        draw_rectangle(width, height);
+        input_rectangle_parameters(&size);
+        draw_rectangle(&size);
         break;
     
         
@@ -138,13 +144,13 @@ int main()
         switch(triangletyp)
         {
             case 1:
-            input_triangle_parameters(&height, &width);
-            draw_triangle(height, width);
+            input_triangle_parameters(&size);
+            draw_triangle(&size);
             break;
         
             case 2:
-            input_isosceles_triangle(&height);
-            draw_isosceles_triangle(height);
+            input_isosceles_triangle(&size);
+            draw_isosceles_triangle(&size);
             break;
         
             default:
@@ -154,8 +160,12 @@ int main()
         break;
     
     case 3:
-    input_rombs_parameters(&width);
-    drawRhomb(width);
+    input_rombs_parameters(&size);
+    drawRhomb(&size);
+    break;
+
+    default:
+    printf("неверный выбор типа фигуры!\n");
     break;
     }
 }
