@@ -56,7 +56,7 @@ void input_isosceles_triangle(int* ptr_height)
     scanf("%d", ptr_height);
 }
 
-void draw_isoscelestriangle(int height)
+void draw_isosceles_triangle(int height)
  {
     for (int i = 1; i <= height; i++)
     {
@@ -114,49 +114,48 @@ void drawRhomb(int width)
 
 int main()
 {
-int  height, width;
-int choise;
-int triangletyp;
-int z;
+    int  height, width;
+    int choise;
+    int triangletyp;
+    int z;
 
     printf("выбирите фигуру 1 - прямоугольник, 2 - треугольник, 3 - ромб:\n");
     scanf("%d", &choise);
-        
-    if ( choise == 1)
+
+    switch(choise)
     {
+        case 1:
         input_rectangle_parameters(&height, &width);
         draw_rectangle(width, height);
-    }
+        break;
+    
         
-    if (choise == 2)
-    {
-
+        case 2:
         printf("Какой треугольник хотите нарисовать?\n");
         printf("1 — прямоугольный 2 - равнобедренный\n");
         scanf("%d", &triangletyp);
 
-
-        if (triangletyp == 1) 
+        switch(triangletyp)
         {
+            case 1:
             input_triangle_parameters(&height, &width);
             draw_triangle(height, width);
-
-        return 0;
-        }
-        if (triangletyp == 2)
-        {
-        input_isosceles_triangle(&height);
-        draw_isoscelestriangle(height);
-
-        }
-        else 
-        {
+            break;
+        
+            case 2:
+            input_isosceles_triangle(&height);
+            draw_isosceles_triangle(height);
+            break;
+        
+            default:
             printf("Неверный выбор типа треугольника!\n");
+            break;
         }
-    }
-    if(choise == 3)
-    {
+        break;
+    
+    case 3:
     input_rombs_parameters(&width);
     drawRhomb(width);
+    break;
     }
 }
